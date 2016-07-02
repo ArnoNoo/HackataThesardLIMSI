@@ -13,6 +13,5 @@ path=$1
 find $path -name "*.json" | while read file
 do
   printf "%s -> " "$file" >&2
-  ( ./parse_json_line.lua < $file > ${file}.tsv && printf "%s\n" >&2) || printf "error\n" >&2
-  exit
+  ( ./parse_json_line.lua < $file > ${file}.tsv && printf "%s\n" "${file}.tsv" >&2) || printf "error\n" >&2
 done
